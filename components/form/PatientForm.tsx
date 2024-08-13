@@ -44,14 +44,33 @@ const PatientForm = () => {
         <p className="text-dark-700">Book your first appointment</p>
       </section>
       <CustomeFormField 
-      fieldType={FormFieldType.INPUT}
-      control={form.control}
-      name="name"
-      label="Full name"
-      placeholder="John Doe"
-      iconSrc="/assets/icons/user.svg"
-      iconAlt="user"
-      />
+        fieldType={FormFieldType.INPUT}
+        control={form.control}
+        name="name"
+        label="Full name"
+        placeholder="John Doe"
+        iconSrc="/assets/icons/user.svg"
+        iconAlt="user"
+        />
+
+      <CustomeFormField 
+        fieldType={FormFieldType.INPUT}
+        control={form.control}
+        name="email"
+        label="Email"
+        placeholder="johndoe@email.com"
+        iconSrc="/assets/icons/email.svg"
+        iconAlt="email"
+        />
+
+        <CustomeFormField 
+        fieldType={FormFieldType.PHONE_INPUT}
+        control={form.control}
+        name="phone"
+        label="Phone Number"
+        placeholder="(+260) 97409876"
+
+        />
       
       <Button type="submit">Submit</Button>
     </form>
