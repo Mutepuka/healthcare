@@ -8,7 +8,9 @@ import {
     FormLabel,
     FormMessage,
   } from "@/components/ui/form";
-  import { Input } from "@/components/ui/input";
+import { Input } from "@/components/ui/input";
+import ReactDatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 import { Control } from 'react-hook-form';
 import { FormFieldType } from './form/PatientForm';
 import Image from 'next/image';
@@ -60,6 +62,30 @@ import { E164Number } from "libphonenumber-js/core";
           </FormControl>
         </div>
       )
+
+      case FormFieldType.DATE_PICKER:
+      return (
+        <div className="flex rounded-md border border-dark-500 bg-dark-400">
+          <Image
+            src="/assets/icons/calendar.svg"
+            height={24}
+            width={24}
+            alt="user"
+            className="ml-2"
+          />
+          <FormControl>
+            <ReactDatePicker
+              showTimeSelect={props.showTimeSelect ?? false}
+              selected={field.value}
+              onChange={(date) => field.onChange(date)}
+              timeInputLabel="Time:"
+              dateFormat={props.dateFormat ?? "MM/dd/yyyy"}
+              wrapperClassName="date-picker"
+            />
+          </FormControl>
+        </div>
+      );
+
       case FormFieldType.PHONE_INPUT:
         return(
           <FormControl>
