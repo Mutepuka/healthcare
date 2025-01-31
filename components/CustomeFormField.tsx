@@ -101,7 +101,10 @@ import { E164Number } from "libphonenumber-js/core";
 
           </FormControl>
         )
-    
+        
+        case FormFieldType.SKELETON:
+          return props.renderSkeleton ? props.renderSkeleton(field) : null;
+
       default:
         break;
     }

@@ -11,9 +11,9 @@ import { UserFormValidation } from '@/lib/validation';
 import { useRouter } from 'next/navigation';
 import { createUser } from '@/lib/actions/patients.actions';
 import { FormFieldType } from './PatientForm';
-import { RadioGroup, RadioGroupItem } from '@radix-ui/react-radio-group';
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { GenderOptions } from '@/constants';
-import { Label } from '@radix-ui/react-label';
+import { Label } from "@/components/ui/label";
  
 const RegisterForm = ({ user }: { user: User }) => {
 
@@ -111,33 +111,29 @@ const RegisterForm = ({ user }: { user: User }) => {
               control={form.control}
               name="gender"
               label="Gender"
-              renderSkeleton={(field) => (
+              renderSkeleton={(field)=>(
                 <FormControl>
-                  <RadioGroup
-                    className="flex h-11 gap-6 xl:justify-between"
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    {GenderOptions.map((option, i) => (
-                      <div key={option + i} className="radio-group">
-                        <RadioGroupItem value={option} id={option} />
-                        <Label htmlFor={option} className="cursor-pointer">
-                          {option}
-                        </Label>
-                      </div>
-                    ))}
-                  </RadioGroup>
+                    <RadioGroup
+                        className="flex h-11 gap-6 xl:justify-between"
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                        >
+                        {GenderOptions.map((option) => (
+                            <div key={option} className="radio-group flex items-center gap-2">
+                            <RadioGroupItem value={option} id={option} />
+                            <Label htmlFor={option} className="cursor-pointer">
+                                {option}
+                            </Label>
+                            </div>
+                        ))}
+                        </RadioGroup>
                 </FormControl>
               )}
+              
             />
+    
           </div>
-
-
       </section>
-      
-
-      
-      
       <SubmitButton isLoading={isLoading}>Get Started</SubmitButton>
     </form>
   </Form>
